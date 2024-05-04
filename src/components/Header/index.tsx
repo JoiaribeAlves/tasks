@@ -31,10 +31,13 @@ export default function Header() {
         ) : (
           <button
             className={styles.loginButton}
-            onClick={() => signIn("google")}
+            onClick={(e) => {
+              e.preventDefault();
+              signIn("google")
+            }}
           >
-            Acessar 
-            <SiGmail size={18} color="#e54"/>
+            Acessar
+            <SiGmail size={18} color="#e54" />
           </button>
         )}
       </section>
