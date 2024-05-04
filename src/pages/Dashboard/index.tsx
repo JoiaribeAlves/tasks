@@ -93,20 +93,20 @@ export default function Dashboard({ user }: HomeProps) {
 
   async function handleShare(id: string) {
     await navigator.clipboard.writeText(
-      `${process.env.NEXT_PUBLIC_URL}/task/${id}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/task/${id}`
     )
 
     alert("URL copiada com sucesso")
   }
 
-  async function handleDeleteTask (id: string)  {
+  async function handleDeleteTask(id: string) {
     const docRef = doc(db, "tarefas", id)
     await deleteDoc(docRef)
-    .then(() => {
-      console.log("Apagado com sucesso")
-    }).catch(err => {
-      console.log(`Erro ao deletar tarefa: ${err}`)
-    })
+      .then(() => {
+        console.log("Apagado com sucesso")
+      }).catch(err => {
+        console.log(`Erro ao deletar tarefa: ${err}`)
+      })
   }
 
   return (
@@ -164,7 +164,7 @@ export default function Dashboard({ user }: HomeProps) {
                   </Link>
                 ) : (
                   <p>{task.tarefa}</p>
-                ) }
+                )}
                 <button className={styles.trashButton} onClick={() => handleDeleteTask(task.id)}>
                   <FaTrash size={24} color="#ea3140" />
                 </button>
