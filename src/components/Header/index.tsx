@@ -33,7 +33,9 @@ export default function Header() {
             className={styles.loginButton}
             onClick={(e) => {
               e.preventDefault();
-              signIn("google")
+              signIn("google", {
+                callbackUrl: "/Dashboard"
+              })
             }}
           >
             Acessar
